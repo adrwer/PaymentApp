@@ -14,7 +14,7 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label>SECURITY CODE</label>
-            <input type="text" class="form-control form-control-lg" placeholder="Security Code" 
+            <input type="password" class="form-control form-control-lg" placeholder="Security Code" 
             name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" 
             required maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched" />
         </div>
