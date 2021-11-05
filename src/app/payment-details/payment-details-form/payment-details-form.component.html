@@ -1,25 +1,31 @@
-<form action="">
+<form novalidate #form="ngForm" action="">
     <input type="hidden" name="id" [value]="service.formData.id" />
     <div class="form-group">
         <label>CARD OWNER NAME</label>
         <input type="text" class="form-control form-control-lg" placeholder="Full Name" 
-        name="cardOwnerName" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" />
+        name="cardOwnerName" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName" required [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched" />
     </div>
     <div class="form-group">
         <label>CARD NUMBER</label>
         <input type="text" class="form-control form-control-lg" placeholder="16 Digit Card Number" 
-        name="cardNumber" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" />
+        name="cardNumber" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber" 
+        required maxlength="16" minlength="16" [class.invalid]="cardNumber.invalid && cardNumber.touched" />
     </div>
     <div class="row">
         <div class="form-group col-md-6">
             <label>SECURITY CODE</label>
             <input type="text" class="form-control form-control-lg" placeholder="Security Code" 
-            name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" />
+            name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode" 
+            required maxlength="3" minlength="3" [class.invalid]="securityCode.invalid && securityCode.touched" />
         </div>
         <div class="form-group col-md-6">
             <label>EXPIRATION DATE</label>
             <input type="text" class="form-control form-control-lg" placeholder="MM/YY" 
-            name="expirationDate" #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate" />
+            name="expirationDate" #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate" 
+            required maxlength="5" minlength="5" [class.invalid]="expirationDate.invalid && expirationDate.touched" />
         </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
     </div>
 </form>
